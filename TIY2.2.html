@@ -57,37 +57,38 @@
         .tools-list {
             margin-left: 40px;
         }
-        .tools-list a {
-            text-decoration: none;
-            color: #333333;
-        }
-        .tools-list a:hover {
-            text-decoration: underline;
-        }
-        .tools-list p {
-            margin: 8px 0;
-        }
 
         /* Minimal hidden paragraph support */
         p.hiddenParagraph { visibility: hidden; }
 
         /* Code container styling */
+        .tool-item {
+            margin-bottom: 20px;
+        }
+        .tool-item p {
+            margin: 0 0 5px 0; /* spacing before code box */
+            display: flex;
+            align-items: center;
+        }
+        .tool-item p img {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tool-item p strong {
+            margin-right: 10px;
+        }
         .code-container {
-            position: relative;
-            margin: 10px 0;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #fefefe;
+            position: relative;
         }
         .code-container pre {
             margin: 0;
             overflow-x: auto;
         }
         /* Buttons styling */
-        .tool-buttons {
-            margin-bottom: 5px;
-        }
-        .copy-button, .download-button {
+        .download-button, .copy-button {
             cursor: pointer;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
@@ -97,7 +98,7 @@
             text-decoration: none;
             color: #333;
         }
-        .copy-button:hover, .download-button:hover {
+        .download-button:hover, .copy-button:hover {
             background-color: #e0e0e0;
         }
     </style>
@@ -110,7 +111,7 @@
                     alert("Copied to clipboard!");
                 },
                 function() {
-                    alert("Failed to copy code.");
+                    alert("Failed to copy.");
                 }
             );
         }
@@ -153,28 +154,37 @@
 
         <div class="tools-list">
             <!-- Excel -->
-            <p><strong>Excel</strong></p>
-            <div class="code-container">
-                <div class="tool-buttons">
-                    <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx" class="download-button" download>Download</a>
+            <div class="tool-item">
+                <p>
+                    <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
+                    <strong>Excel</strong>
+                    <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx"
+                       class="download-button"
+                       download>Download</a>
                     <button class="copy-button" onclick="copyCode('excelSteps')">Copy</button>
-                </div>
-                <pre><code id="excelSteps">
+                </p>
+                <div class="code-container">
+                    <pre><code id="excelSteps">
 1) Open the dataset in Excel.
 2) Identify the GPA column and calculate the mean for all non-missing values.
 3) Create a new column: in empty cells, enter the previously calculated mean.
 4) Save your file and analyze the updated GPA column.
-                </code></pre>
+                    </code></pre>
+                </div>
             </div>
 
             <!-- Python -->
-            <p><strong>Python</strong></p>
-            <div class="code-container">
-                <div class="tool-buttons">
-                    <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb" class="download-button" download>Download</a>
+            <div class="tool-item">
+                <p>
+                    <img src="images/python.png" alt="Python icon" height="32" width="32" />
+                    <strong>Python</strong>
+                    <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
+                       class="download-button"
+                       download>Download</a>
                     <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
-                </div>
-                <pre><code id="pythonCode">
+                </p>
+                <div class="code-container">
+                    <pre><code id="pythonCode">
 # Example Python code for imputing missing values:
 import pandas as pd
 
@@ -184,39 +194,50 @@ df['GPA_Imputed'] = df['GPA'].fillna(mean_gpa)
 
 print("Original mean GPA:", df['GPA'].mean(skipna=True))
 print("New mean GPA after imputation:", df['GPA_Imputed'].mean())
-                </code></pre>
+                    </code></pre>
+                </div>
             </div>
 
             <!-- R -->
-            <p><strong>R</strong></p>
-            <div class="code-container">
-                <div class="tool-buttons">
-                    <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R" class="download-button" download>Download</a>
+            <div class="tool-item">
+                <p>
+                    <img src="images/R.png" alt="R icon" height="32" width="32" />
+                    <strong>R</strong>
+                    <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R"
+                       class="download-button"
+                       download>Download</a>
                     <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
-                </div>
-                <pre><code id="rCode">
+                </p>
+                <div class="code-container">
+                    <pre><code id="rCode">
 # Example R code for imputing missing values:
 mean_gpa <- mean(df$GPA, na.rm = TRUE)
 df$GPA_Imputed <- ifelse(is.na(df$GPA), mean_gpa, df$GPA)
 
 cat("Original mean GPA:", mean(df$GPA, na.rm = TRUE), "\n")
 cat("New mean GPA after imputation:", mean(df$GPA_Imputed), "\n")
-                </code></pre>
+                    </code></pre>
+                </div>
             </div>
 
             <!-- StatCrunch -->
-            <p><strong>StatCrunch</strong></p>
-            <div class="code-container">
-                <div class="tool-buttons">
-                    <a href="docs/Ch 2 StatCrunch 2 TiY Impute Missing Values From Internal Data.docx" class="download-button" download>Download</a>
+            <div class="tool-item">
+                <p>
+                    <img src="images/statcrunch.png" alt="StatCrunch icon" height="32" width="32" />
+                    <strong>StatCrunch</strong>
+                    <a href="docs/Ch 2 StatCrunch 2 TiY Impute Missing Values From Internal Data.docx"
+                       class="download-button"
+                       download>Download</a>
                     <button class="copy-button" onclick="copyCode('statCrunchSteps')">Copy</button>
-                </div>
-                <pre><code id="statCrunchSteps">
+                </p>
+                <div class="code-container">
+                    <pre><code id="statCrunchSteps">
 1) Load your data in StatCrunch.
 2) Compute summary statistics for the GPA column to get the mean.
 3) Use "Data" > "Recode" > "Numeric" to replace blank GPA cells with the mean value.
 4) Verify the new mean GPA with the updated column.
-                </code></pre>
+                    </code></pre>
+                </div>
             </div>
         </div>
     </div>
