@@ -1,98 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>TIY - Data Science for All</title>
   <style>
-    :root {
-      --orange: #d55e00;
-      --blue: #0072b2;
-      --green: #009e73;
-      --gray: #f4f4f4;
-      --text: #333;
-      --accent: #cc79a7;
-    }
-
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--gray);
-      color: var(--text);
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fdfdfd;
+      color: #333;
       line-height: 1.6;
     }
 
-    header {
-      background-color: var(--blue);
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    h1 {
+      color: #0072b2;
+      font-size: 2em;
+      margin-bottom: 1em;
     }
 
     ul {
-      list-style: none;
+      list-style-type: none;
       padding: 0;
     }
 
     li {
-      margin: 1.5rem 0;
+      margin: 1em 0;
     }
 
     a {
-      display: block;
-      padding: 1rem;
-      border-left: 5px solid var(--orange);
-      background: var(--gray);
       text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text);
-      transition: all 0.2s ease-in-out;
+      color: #d55e00;
+      font-size: 1.2em;
+      font-weight: bold;
     }
 
     a:hover {
-      background: var(--green);
-      color: white;
-      border-left-color: var(--accent);
+      color: #009e73;
     }
 
     @media (max-width: 600px) {
-      main {
-        margin: 1rem;
-        padding: 1rem;
-      }
-
-      a {
-        font-size: 1rem;
-        padding: 0.75rem;
+      body {
+        margin: 20px;
+        font-size: 1em;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>TIY: Data Science for All</h1>
-  </header>
-  <main>
-    <ul>
-      <li><a href="chapter1.html">Chapter 1: What is Data Science?</a></li>
-      <li><a href="chapter2.html">Chapter 2: Data Wrangling - Preprocessing</a></li>
-      <li><a href="chapter3.html">Chapter 3: Making Sense of Data Through Visualization</a></li>
-    </ul>
-  </main>
+  <h1>TIY: Data Science for All</h1>
+  <ul>
+    <li><a href="chapter1.html">Chapter 1: What is Data Science?</a></li>
+    <li><a href="chapter2.html">Chapter 2: Data Wrangling - Preprocessing</a></li>
+    <li><a href="chapter3.html">Chapter 3: Making Sense of Data Through Visualization</a></li>
+  </ul>
 </body>
 </html>
