@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Document</title>
+    <title>DS4A TIY 2.2</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <style>
         /* Basic resets */
@@ -69,6 +69,7 @@
             margin: 0 0 5px 0; /* spacing before code box */
             display: flex;
             align-items: center;
+            flex-wrap: wrap; /* let buttons wrap if window is narrow */
         }
         .tool-item p img {
             margin-right: 8px;
@@ -88,17 +89,19 @@
             overflow-x: auto;
         }
         /* Buttons styling */
-        .download-button, .copy-button {
+        .download-button, .copy-button, .colab-button, .posit-button {
             cursor: pointer;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             padding: 3px 6px;
             font-size: 0.8em;
             margin-right: 10px;
+            margin-top: 5px; /* in case it wraps to next line */
             text-decoration: none;
             color: #333;
         }
-        .download-button:hover, .copy-button:hover {
+        .download-button:hover, .copy-button:hover,
+        .colab-button:hover, .posit-button:hover {
             background-color: #e0e0e0;
         }
     </style>
@@ -122,13 +125,13 @@
     <!-- Page Title -->
     <h1>Try It Yourself: Impute Missing Values from Internal Data</h1>
 
-        <div class="dataset-info">
-          <p>
+    <div class="dataset-info">
+        <p>
             <strong>Dataset:</strong>
             <a href="docs/vote.csv" download>vote</a>
-          </p>
-        </div>
-    
+        </p>
+    </div>
+
     <div class="imputation-info">
         <p>
             In our ongoing analysis of the voter survey dataset, we now tackle the issue
@@ -185,6 +188,10 @@
                        class="download-button"
                        download>Download</a>
                     <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
+                    <!-- Open in Colab button (generic link) -->
+                    <a href="https://colab.research.google.com"
+                       target="_blank"
+                       class="colab-button">Open in Colab</a>
                 </p>
                 <div class="code-container">
                     <pre><code id="pythonCode">
@@ -210,6 +217,10 @@ print("New mean GPA after imputation:", df['GPA_Imputed'].mean())
                        class="download-button"
                        download>Download</a>
                     <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
+                    <!-- Open in Posit Cloud button (generic link) -->
+                    <a href="https://posit.cloud"
+                       target="_blank"
+                       class="posit-button">Open in Posit Cloud</a>
                 </p>
                 <div class="code-container">
                     <pre><code id="rCode">
