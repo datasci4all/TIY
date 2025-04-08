@@ -1,290 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>TIY 2.2 Example</title>
-  <meta charset="utf-8" />
-  <style>
-    /* Basic resets */
-    body {
-      margin: 30px auto;
-      max-width: 800px;
-      font-family: "Palatino Linotype", serif;
-      font-size: 11pt;
-      line-height: 1.4;
-      color: #333333;
-    }
-    h1, h2 {
-      font-family: "Arial Black", sans-serif;
-      margin-bottom: 10px;
-    }
-    h1 {
-      font-size: 20pt;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    h2 {
-      font-size: 16pt;
-      margin-top: 30px;
-    }
-
-    .dataset-info, .imputation-info, .questions {
-      margin-bottom: 20px;
-    }
-    .questions p {
-      margin-left: 40px;
-      text-indent: -0.5em;
-    }
-
-    .tool-time {
-      margin-top: 30px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      background-color: #f9f9f9;
-    }
-    .tool-time-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      font-family: "Arial Black", sans-serif;
-      color: #113963;
-    }
-    .tool-time-title img {
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-    .tools-list {
-      margin-left: 40px;
-    }
-
-    /* Minimal hidden paragraph support */
-    p.hiddenParagraph { visibility: hidden; }
-
-    /* Code container styling */
-    .tool-item {
-      margin-bottom: 20px;
-    }
-    .tool-item p {
-      margin: 0 0 5px 0; /* spacing before code box */
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap; /* let buttons wrap if window is narrow */
-    }
-    .tool-item p img {
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .tool-item p strong {
-      margin-right: 10px;
-    }
-    .code-container {
-      border: 1px solid #ccc;
-      padding: 10px;
-      background-color: #fefefe;
-      position: relative;
-    }
-    .code-container pre {
-      margin: 0;
-      overflow-x: auto;
-    }
-
-    /* Buttons styling */
-    .download-button, .copy-button, .colab-button, .posit-button {
-      cursor: pointer;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 3px 6px;
-      font-size: 0.8em;
-      margin-right: 10px;
-      margin-top: 5px; /* in case it wraps to next line */
-      text-decoration: none;
-      color: #333;
-    }
-    .download-button:hover,
-    .copy-button:hover,
-    .colab-button:hover,
-    .posit-button:hover {
-      background-color: #e0e0e0;
-    }
-  </style>
-
-  <script>
-    // Copy code text from a <code> element to clipboard
-    function copyCode(elementId) {
-      const codeText = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(codeText)
-        .then(() => alert("Copied to clipboard!"))
-        .catch(() => alert("Failed to copy."));
-    }
-
-    // Fetch text from a remote file (e.g., raw GitHub) and place it in a <code> element
-    async function loadFileContent(url, containerId) {
-      try {
-        const response = await fetch(url);
-        if(!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+    <title>TIY 2.2</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style>
+        /* Basic resets */
+        body {
+            margin: 30px auto;
+            max-width: 800px;
+            font-family: "Palatino Linotype", serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #333333;
         }
-        const text = await response.text();
-        document.getElementById(containerId).innerText = text;
-      } catch (error) {
-        console.error('Error fetching file content:', error);
-        document.getElementById(containerId).innerText =
-          "Could not load file content. See console for details.";
-      }
-    }
+        h1, h2 {
+            font-family: "Arial Black", sans-serif;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 20pt;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        h2 {
+            font-size: 16pt;
+            margin-top: 30px;
+        }
 
-    // On page load, fetch dynamic text for Python and R code boxes
-    window.addEventListener('DOMContentLoaded', () => {
-      // 1) Python code from GitHub (ipynb file in raw form => will show JSON)
-      loadFileContent(
-        "https://raw.githubusercontent.com/<YourUserName>/<YourRepoName>/main/docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb",
-        "pythonCode"
-      );
+        .dataset-info, .imputation-info, .questions {
+            margin-bottom: 20px;
+        }
 
-      // 2) R code from GitHub
-      loadFileContent(
-        "https://raw.githubusercontent.com/<YourUserName>/<YourRepoName>/main/docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R",
-        "rCode"
-      );
+        .questions p {
+            margin-left: 40px;
+            text-indent: -0.5em;
+        }
 
-      // If you need dynamic text for Excel or StatCrunch instructions,
-      // you can do the same, but note docx files won't look nice as plain text.
-    });
-  </script>
+        /* Tool Time styling */
+        .tool-time {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .tool-time-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-family: "Arial Black", sans-serif;
+            color: #113963;
+        }
+        .tool-time-title img {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .tools-list {
+            margin-left: 40px;
+        }
+
+        /* Minimal hidden paragraph support */
+        p.hiddenParagraph { visibility: hidden; }
+
+        /* Code container styling */
+        .tool-item {
+            margin-bottom: 20px;
+        }
+        .tool-item p {
+            margin: 0 0 5px 0; /* spacing before code box */
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* let buttons wrap if window is narrow */
+        }
+        .tool-item p img {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tool-item p strong {
+            margin-right: 10px;
+        }
+        .code-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fefefe;
+            position: relative;
+        }
+        .code-container pre {
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        /* Buttons styling */
+        .download-button, .copy-button, .colab-button, .posit-button {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 3px 6px;
+            font-size: 0.8em;
+            margin-right: 10px;
+            margin-top: 5px; /* in case it wraps to next line */
+            text-decoration: none;
+            color: #333;
+        }
+        .download-button:hover,
+        .copy-button:hover,
+        .colab-button:hover,
+        .posit-button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+
+    <script>
+        function copyCode(elementId) {
+            const codeText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(codeText).then(
+                function() {
+                    alert("Copied to clipboard!");
+                },
+                function() {
+                    alert("Failed to copy.");
+                }
+            );
+        }
+    </script>
 </head>
 <body>
 
-  <!-- Page Title -->
-  <h1>Try It Yourself: Impute Missing Values from Internal Data</h1>
+    <!-- Page Title -->
+    <h1>Try It Yourself: Impute Missing Values from Internal Data</h1>
 
-  <div class="dataset-info">
-    <p>
-      <strong>Dataset:</strong>
-      <a href="docs/vote.csv" download>vote</a>
-    </p>
-  </div>
-
-  <div class="imputation-info">
-    <p>
-      In our ongoing analysis of the voter survey dataset, we now tackle the issue
-      of missing GPA values by employing the mean imputation method. Our objective
-      is to create a new column in the dataset, which will replicate the original
-      GPA data but with a key modification: missing values will be filled in with
-      the mean GPA of the available data.
-    </p>
-  </div>
-
-  <h2>Questions</h2>
-  <div class="questions">
-    <p>1. What is the mean GPA (before replacing missing data)?</p>
-    <p>2. What is the median GPA (before replacing missing data)?</p>
-    <p>3. After mean imputation, what is the new mean GPA?</p>
-    <p>4. After mean imputation, what is the new median GPA?</p>
-    <p>5. Describe the results using the STAR Framework.</p>
-  </div>
-
-  <!-- Tool Time Section -->
-  <div class="tool-time">
-    <div class="tool-time-title">
-      <img src="images/gear.png" alt="Gear Icon" height="32" width="32" />
-      Tool Time
+    <div class="dataset-info">
+        <p>
+            <strong>Dataset:</strong>
+            <a href="docs/vote.csv" download>vote</a>
+        </p>
     </div>
 
-    <div class="tools-list">
-      <!-- Excel -->
-      <div class="tool-item">
+    <div class="imputation-info">
         <p>
-          <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
-          <strong>Excel</strong>
-          <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx"
-             class="download-button"
-             download>Download</a>
-          <button class="copy-button" onclick="copyCode('excelSteps')">Copy</button>
+            In our ongoing analysis of the voter survey dataset, we now tackle the issue
+            of missing GPA values by employing the mean imputation method. Our objective
+            is to create a new column in the dataset, which will replicate the original
+            GPA data but with a key modification: missing values will be filled in with
+            the mean GPA of the available data.
         </p>
-        <div class="code-container">
-          <pre><code id="excelSteps">
+    </div>
+
+    <h2>Questions</h2>
+    <div class="questions">
+        <p>1. What is the mean GPA (before replacing missing data)?</p>
+        <p>2. What is the median GPA (before replacing missing data)?</p>
+        <p>3. After mean imputation, what is the new mean GPA?</p>
+        <p>4. After mean imputation, what is the new median GPA?</p>
+        <p>5. Describe the results using the STAR Framework.</p>
+    </div>
+
+    <!-- Tool Time Section -->
+    <div class="tool-time">
+        <div class="tool-time-title">
+            <img src="images/gear.png" alt="Gear Icon" height="32" width="32" />
+            Tool Time
+        </div>
+
+        <div class="tools-list">
+            <!-- Excel -->
+            <div class="tool-item">
+                <p>
+                    <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
+                    <strong>Excel</strong>
+                    <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx"
+                       class="download-button"
+                       download>Download</a>
+                    <button class="copy-button" onclick="copyCode('excelSteps')">Copy</button>
+                </p>
+                <div class="code-container">
+                    <pre><code id="excelSteps">
 1) Open the dataset in Excel.
 2) Identify the GPA column and calculate the mean for all non-missing values.
 3) Create a new column: in empty cells, enter the previously calculated mean.
 4) Save your file and analyze the updated GPA column.
-          </code></pre>
-        </div>
-      </div>
+                    </code></pre>
+                </div>
+            </div>
 
-      <!-- Python -->
-      <div class="tool-item">
-        <p>
-          <img src="images/python.png" alt="Python icon" height="32" width="32" />
-          <strong>Python</strong>
+            <!-- Python -->
+            <div class="tool-item">
+                <p>
+                    <img src="images/python.png" alt="Python icon" height="32" width="32" />
+                    <strong>Python</strong>
 
-          <!-- Download button for local copy -->
-          <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
-             class="download-button"
-             download>Download</a>
+                    <!-- Download button -->
+                    <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
+                       class="download-button"
+                       download>Download</a>
 
-          <!-- Copy button for the code container -->
-          <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
+                    <!-- Copy button -->
+                    <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
 
-          <!-- Open in Colab button pointing to GitHub path for the same file -->
-          <a href="https://colab.research.google.com/github/<YourUserName>/<YourRepoName>/blob/main/docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
-             target="_blank"
-             class="colab-button">
-            Open in Colab
-          </a>
-        </p>
-        <div class="code-container">
-          <!-- This code container is populated dynamically with raw content from GitHub -->
-          <pre><code id="pythonCode">Loading Python code from GitHub...</code></pre>
-        </div>
-      </div>
+                    <!-- Open in Colab button pointing to an example GitHub path for the same file -->
+                    <a href="https://colab.research.google.com/github/YourUserName/YourRepoName/blob/main/docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
+                       target="_blank"
+                       class="colab-button">
+                       Open in Colab
+                    </a>
+                </p>
+                <div class="code-container">
+                    <pre><code id="pythonCode">
+# Example Python code for imputing missing values:
+import pandas as pd
 
-      <!-- R -->
-      <div class="tool-item">
-        <p>
-          <img src="images/R.png" alt="R icon" height="32" width="32" />
-          <strong>R</strong>
+# Suppose 'df' is our DataFrame and 'GPA' is the column with missing values
+mean_gpa = df['GPA'].mean()
+df['GPA_Imputed'] = df['GPA'].fillna(mean_gpa)
 
-          <!-- Download button for local copy -->
-          <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R"
-             class="download-button"
-             download>Download</a>
+print("Original mean GPA:", df['GPA'].mean(skipna=True))
+print("New mean GPA after imputation:", df['GPA_Imputed'].mean())
+                    </code></pre>
+                </div>
+            </div>
 
-          <!-- Copy button -->
-          <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
+            <!-- R -->
+            <div class="tool-item">
+                <p>
+                    <img src="images/R.png" alt="R icon" height="32" width="32" />
+                    <strong>R</strong>
 
-          <!-- Open in Posit Cloud button -->
-          <a href="https://posit.cloud"  <!-- or your direct link -->
-             target="_blank"
-             class="posit-button">
-            Open in Posit Cloud
-          </a>
-        </p>
-        <div class="code-container">
-          <!-- This code container is populated dynamically with raw content from GitHub -->
-          <pre><code id="rCode">Loading R code from GitHub...</code></pre>
-        </div>
-      </div>
+                    <!-- Download button -->
+                    <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R"
+                       class="download-button"
+                       download>Download</a>
 
-      <!-- StatCrunch -->
-      <div class="tool-item">
-        <p>
-          <img src="images/statcrunch.png" alt="StatCrunch icon" height="32" width="32" />
-          <strong>StatCrunch</strong>
-          <a href="docs/Ch 2 StatCrunch 2 TiY Impute Missing Values From Internal Data.docx"
-             class="download-button"
-             download>Download</a>
-          <button class="copy-button" onclick="copyCode('statCrunchSteps')">Copy</button>
-        </p>
-        <div class="code-container">
-          <pre><code id="statCrunchSteps">
+                    <!-- Copy button -->
+                    <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
+
+                    <!-- Open in Posit Cloud button (placeholder link) -->
+                    <a href="https://posit.cloud"
+                       target="_blank"
+                       class="posit-button">
+                       Open in Posit Cloud
+                    </a>
+                </p>
+                <div class="code-container">
+                    <pre><code id="rCode">
+# Example R code for imputing missing values:
+mean_gpa <- mean(df$GPA, na.rm = TRUE)
+df$GPA_Imputed <- ifelse(is.na(df$GPA), mean_gpa, df$GPA)
+
+cat("Original mean GPA:", mean(df$GPA, na.rm = TRUE), "\n")
+cat("New mean GPA after imputation:", mean(df$GPA_Imputed), "\n")
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- StatCrunch -->
+            <div class="tool-item">
+                <p>
+                    <img src="images/statcrunch.png" alt="StatCrunch icon" height="32" width="32" />
+                    <strong>StatCrunch</strong>
+                    <a href="docs/Ch 2 StatCrunch 2 TiY Impute Missing Values From Internal Data.docx"
+                       class="download-button"
+                       download>Download</a>
+                    <button class="copy-button" onclick="copyCode('statCrunchSteps')">Copy</button>
+                </p>
+                <div class="code-container">
+                    <pre><code id="statCrunchSteps">
 1) Load your data in StatCrunch.
 2) Compute summary statistics for the GPA column to get the mean.
 3) Use "Data" > "Recode" > "Numeric" to replace blank GPA cells with the mean value.
 4) Verify the new mean GPA with the updated column.
-          </code></pre>
+                    </code></pre>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
-  </div>
 
 </body>
 </html>
