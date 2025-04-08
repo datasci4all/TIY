@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>DS4A TIY 2.2</title>
+    <title>TIY 2.2</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <style>
         /* Basic resets */
@@ -88,6 +88,7 @@
             margin: 0;
             overflow-x: auto;
         }
+
         /* Buttons styling */
         .download-button, .copy-button, .colab-button, .posit-button {
             cursor: pointer;
@@ -100,8 +101,10 @@
             text-decoration: none;
             color: #333;
         }
-        .download-button:hover, .copy-button:hover,
-        .colab-button:hover, .posit-button:hover {
+        .download-button:hover,
+        .copy-button:hover,
+        .colab-button:hover,
+        .posit-button:hover {
             background-color: #e0e0e0;
         }
     </style>
@@ -184,14 +187,21 @@
                 <p>
                     <img src="images/python.png" alt="Python icon" height="32" width="32" />
                     <strong>Python</strong>
+
+                    <!-- Download button -->
                     <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
                        class="download-button"
                        download>Download</a>
+
+                    <!-- Copy button -->
                     <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
-                    <!-- Open in Colab button (generic link) -->
-                    <a href="https://colab.research.google.com"
+
+                    <!-- Open in Colab button pointing to an example GitHub path for the same file -->
+                    <a href="https://colab.research.google.com/github/YourUserName/YourRepoName/blob/main/docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb"
                        target="_blank"
-                       class="colab-button">Open in Colab</a>
+                       class="colab-button">
+                       Open in Colab
+                    </a>
                 </p>
                 <div class="code-container">
                     <pre><code id="pythonCode">
@@ -213,14 +223,21 @@ print("New mean GPA after imputation:", df['GPA_Imputed'].mean())
                 <p>
                     <img src="images/R.png" alt="R icon" height="32" width="32" />
                     <strong>R</strong>
+
+                    <!-- Download button -->
                     <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R"
                        class="download-button"
                        download>Download</a>
+
+                    <!-- Copy button -->
                     <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
-                    <!-- Open in Posit Cloud button (generic link) -->
+
+                    <!-- Open in Posit Cloud button (placeholder link) -->
                     <a href="https://posit.cloud"
                        target="_blank"
-                       class="posit-button">Open in Posit Cloud</a>
+                       class="posit-button">
+                       Open in Posit Cloud
+                    </a>
                 </p>
                 <div class="code-container">
                     <pre><code id="rCode">
@@ -253,6 +270,7 @@ cat("New mean GPA after imputation:", mean(df$GPA_Imputed), "\n")
                     </code></pre>
                 </div>
             </div>
+
         </div>
     </div>
 
