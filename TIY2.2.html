@@ -130,4 +130,96 @@
             In our ongoing analysis of the voter survey dataset, we now tackle the issue
             of missing GPA values by employing the mean imputation method. Our objective
             is to create a new column in the dataset, which will replicate the original
-            GPA data but with a key modification: missing values
+            GPA data but with a key modification: missing values will be filled in with
+            the mean GPA of the available data.
+        </p>
+    </div>
+
+    <h2>Questions</h2>
+    <div class="questions">
+        <p>1. What is the mean GPA (before replacing missing data)?</p>
+        <p>2. What is the median GPA (before replacing missing data)?</p>
+        <p>3. After mean imputation, what is the new mean GPA?</p>
+        <p>4. After mean imputation, what is the new median GPA?</p>
+        <p>5. Describe the results using the STAR Framework.</p>
+    </div>
+
+    <!-- Tool Time Section -->
+    <div class="tool-time">
+        <div class="tool-time-title">
+            <img src="images/gear.png" alt="Gear Icon" height="32" width="32" />
+            Tool Time
+        </div>
+
+        <div class="tools-list">
+            <!-- Excel -->
+            <p><strong>Excel</strong></p>
+            <div class="code-container">
+                <div class="tool-buttons">
+                    <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx" class="download-button" download>Download</a>
+                    <button class="copy-button" onclick="copyCode('excelSteps')">Copy</button>
+                </div>
+                <pre><code id="excelSteps">
+1) Open the dataset in Excel.
+2) Identify the GPA column and calculate the mean for all non-missing values.
+3) Create a new column: in empty cells, enter the previously calculated mean.
+4) Save your file and analyze the updated GPA column.
+                </code></pre>
+            </div>
+
+            <!-- Python -->
+            <p><strong>Python</strong></p>
+            <div class="code-container">
+                <div class="tool-buttons">
+                    <a href="docs/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb" class="download-button" download>Download</a>
+                    <button class="copy-button" onclick="copyCode('pythonCode')">Copy</button>
+                </div>
+                <pre><code id="pythonCode">
+# Example Python code for imputing missing values:
+import pandas as pd
+
+# Suppose 'df' is our DataFrame and 'GPA' is the column with missing values
+mean_gpa = df['GPA'].mean()
+df['GPA_Imputed'] = df['GPA'].fillna(mean_gpa)
+
+print("Original mean GPA:", df['GPA'].mean(skipna=True))
+print("New mean GPA after imputation:", df['GPA_Imputed'].mean())
+                </code></pre>
+            </div>
+
+            <!-- R -->
+            <p><strong>R</strong></p>
+            <div class="code-container">
+                <div class="tool-buttons">
+                    <a href="docs/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R" class="download-button" download>Download</a>
+                    <button class="copy-button" onclick="copyCode('rCode')">Copy</button>
+                </div>
+                <pre><code id="rCode">
+# Example R code for imputing missing values:
+mean_gpa <- mean(df$GPA, na.rm = TRUE)
+df$GPA_Imputed <- ifelse(is.na(df$GPA), mean_gpa, df$GPA)
+
+cat("Original mean GPA:", mean(df$GPA, na.rm = TRUE), "\n")
+cat("New mean GPA after imputation:", mean(df$GPA_Imputed), "\n")
+                </code></pre>
+            </div>
+
+            <!-- StatCrunch -->
+            <p><strong>StatCrunch</strong></p>
+            <div class="code-container">
+                <div class="tool-buttons">
+                    <a href="docs/Ch 2 StatCrunch 2 TiY Impute Missing Values From Internal Data.docx" class="download-button" download>Download</a>
+                    <button class="copy-button" onclick="copyCode('statCrunchSteps')">Copy</button>
+                </div>
+                <pre><code id="statCrunchSteps">
+1) Load your data in StatCrunch.
+2) Compute summary statistics for the GPA column to get the mean.
+3) Use "Data" > "Recode" > "Numeric" to replace blank GPA cells with the mean value.
+4) Verify the new mean GPA with the updated column.
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
