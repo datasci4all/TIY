@@ -3,146 +3,149 @@
     <title>Document</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <style type="text/css">
-        p.hiddenParagraph { visibility:hidden } 
-        p { margin-top:0; margin-bottom:0; font-family:Palatino Linotype; font-size:11pt; color:WindowText; }
-        p.style_Normal { font-family:Palatino Linotype; }
-        p.style_Heading1 { outline-width:1; margin-top:21.667px; margin-bottom:0px; margin-left:7.6px; font-size:15pt; font-family:Arial Black; }
-        .style_TableNormal {}
-        p.style_BodyText {}
-        p.style_ListParagraph { margin-top:8.133px; margin-bottom:0px; margin-left:40.733px; text-indent:-.654cm; font-family:Tahoma; }
-        p.style_TableParagraph {}
-        p.style_Header {}
-        p.style_Footer {}
-        p.X3AS7TABSTYLE {}
-        span.BulletSymbol { font-family:'Symbol'; }
+        /* Basic resets */
         body {
-            margin-left:96px;
-            margin-top:37.333px;
-            margin-bottom:18.667px;
-            margin-right:82.667px;
+            margin: 30px auto;
+            max-width: 800px;
+            font-family: "Palatino Linotype", serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #333333;
         }
-        div.basic {
-            width:17.18cm; 
-            height:26.123cm;
+        h1, h2 {
+            font-family: "Arial Black", sans-serif;
+            margin-bottom: 10px;
         }
-        p.hiddenParagraph { font-size:2pt; visibility:hidden; }
+        h1 {
+            font-size: 20pt;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        h2 {
+            font-size: 16pt;
+            margin-top: 30px;
+        }
+
+        .dataset-info, .imputation-info, .questions {
+            margin-bottom: 20px;
+        }
+
+        .questions p {
+            margin-left: 40px;
+            text-indent: -0.5em;
+        }
+
+        /* Tool Time styling */
+        .tool-time {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .tool-time-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-family: "Arial Black", sans-serif;
+            color: #113963;
+        }
+        .tool-time-title img {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .tools-list {
+            margin-left: 40px;
+        }
+        .tools-list p {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        .tools-list img {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tools-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333333;
+        }
+        .tools-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Minimal hidden paragraph support */
+        p.hiddenParagraph { visibility: hidden; }
     </style>
 </head>
 <body>
-<div class="basic">
-    <p class="style_Normal style_Heading1" style="text-align:justify; outline-width:1;">
-        <span style="font-family:Arial Black; font-size:15pt;">Try</span>
-        <span style="font-family:Arial Black; font-size:15pt;">It</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Yourself:</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Impute</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Missing</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Values</span>
-        <span style="font-family:Arial Black; font-size:15pt;">from</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Internal</span>
-        <span style="font-family:Arial Black; font-size:15pt;">Data</span>
-    </p>
 
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:6.133px; margin-bottom:0px; line-height:.462cm; text-align:justify; margin-left:7.6px;">
-            <span style="font-family:Palatino Linotype; font-size:11pt;">Dataset: </span><span>vote</span>
-        </p>
+    <!-- Page Title -->
+    <h1>Try It Yourself: Impute Missing Values from Internal Data</h1>
+
+    <div class="dataset-info">
+        <p><strong>Dataset:</strong> vote</p>
     </div>
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:.067px; margin-bottom:0px; line-height:0.9791666667; text-align:justify; margin-left:7.6px; margin-right:20.8px;">&nbsp;</p>
-    </div>
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:.067px; margin-bottom:0px; line-height:0.9791666667; text-align:justify; margin-left:7.6px; margin-right:20.8px;">
-            In our ongoing analysis of the voter survey dataset, we now tackle the issue of missing GPA values
-            by employing the mean imputation method. Our objective is to create a new column in the dataset,
-            which will replicate the original GPA data but with a key modification: missing values will be
-            filled in with the mean GPA of the available data.
+
+    <div class="imputation-info">
+        <p>
+            In our ongoing analysis of the voter survey dataset, we now tackle the issue
+            of missing GPA values by employing the mean imputation method. Our objective
+            is to create a new column in the dataset, which will replicate the original
+            GPA data but with a key modification: missing values will be filled in with
+            the mean GPA of the available data.
         </p>
     </div>
 
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:12.533px; margin-bottom:0px; line-height:.522cm; margin-left:7.6px;">
-            <span style="font-family:Arial Black;">Questions</span>
-        </p>
+    <h2>Questions</h2>
+
+    <div class="questions">
+        <p>1. What is the mean GPA (before replacing missing data)?</p>
+        <p>2. What is the median GPA (before replacing missing data)?</p>
+        <p>3. After mean imputation, what is the new mean GPA?</p>
+        <p>4. After mean imputation, what is the new median GPA?</p>
+        <p>5. Describe the results using the STAR Framework.</p>
     </div>
 
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:12.533px; margin-bottom:0px; line-height:.522cm; margin-left:7.6px;">
-            Answer the following questions (use two decimal places):
-            Before replacing missing data:
-        </p>
-    </div>
-
-    <p class="style_Normal style_ListParagraph" style="margin-left:40.8px; text-indent:-.656cm; margin-top:11.4px;">
-        1. What is the mean GPA?
-    </p>
-    <p class="style_Normal style_ListParagraph" style="margin-left:40.8px; text-indent:-.656cm;">
-        2. What is the median GPA?
-    </p>
-
-    <div>
-        <p class="style_Normal style_BodyText" style="margin-top:11.467px; margin-bottom:0px; margin-left:7.6px;">
-            After replacing the missing data using mean imputation:
-        </p>
-    </div>
-
-    <p class="style_Normal style_ListParagraph" style="margin-left:40.8px; text-indent:-.656cm; margin-top:12.133px;">
-        3. What is the mean GPA?
-    </p>
-    <p class="style_Normal style_ListParagraph" style="margin-left:40.8px; text-indent:-.656cm;">
-        4. What is the median GPA?
-    </p>
-
-    <p class="style_Normal style_ListParagraph" style="margin-left:40.8px; text-indent:-.656cm; margin-top:8.067px;">
-        5. Describe the results using the STAR Framework.
-    </p>
-
-    <hr/>
-
-    <!-- Begin updated "Tool Time" section with aligned, clickable icons and text -->
-    <div style="margin-left:40.8px; margin-top:12px;">
-        <p style="font-family:Arial Black; color:#113963;">
+    <!-- Tool Time Section -->
+    <div class="tool-time">
+        <div class="tool-time-title">
             <img src="images/gear.png" alt="Gear Icon" height="32" width="32" />
-            <span style="margin-left:8px;">Tool Time</span>
-        </p>
+            Tool Time
+        </div>
 
-        <!-- Excel -->
-        <p style="display:flex; align-items:center; margin-top:8px;">
-            <a href="Ch_2/TryItYourself/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx" 
-               style="display:flex; align-items:center; text-decoration:none;">
-                <img src="images/excel.png" alt="Excel icon" style="margin-right:8px;" height="32" width="32"/>
-                <span>Excel</span>
-            </a>
-        </p>
-
-        <!-- Python -->
-        <p style="display:flex; align-items:center; margin-top:8px;">
-            <a href="Ch_2/TryItYourself/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.ipynb" 
-               style="display:flex; align-items:center; text-decoration:none;">
-                <img src="images/python.png" alt="Python icon" style="margin-right:8px;" height="32" width="32"/>
-                <span>Python</span>
-            </a>
-        </p>
-
-        <!-- R -->
-        <p style="display:flex; align-items:center; margin-top:8px;">
-            <a href="Ch_2/TryItYourself/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R" 
-               style="display:flex; align-items:center; text-decoration:none;">
-                <img src="images/R.png" alt="R icon" style="margin-right:8px;" height="32" width="32"/>
-                <span>R</span>
-            </a>
-        </p>
-
-        <!-- StatCrunch -->
-        <p style="display:flex; align-items:center; margin-top:8px;">
-            <a href="Ch_2/TryItYourself/Ch StatCrunch 2 TiY Impute Missing Values From Internal Data.docx" 
-               style="display:flex; align-items:center; text-decoration:none;">
-                <img src="images/statcrunch.png" alt="StatCrunch icon" style="margin-right:8px;" height="32" width="32"/>
-                <span>StatCrunch</span>
-            </a>
-        </p>
+        <div class="tools-list">
+            <!-- Excel -->
+            <p>
+                <a href="Ch_2/TryItYourself/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx">
+                    <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
+                    Excel
+                </a>
+            </p>
+            <!-- Python -->
+            <p>
+                <a href="Ch_2/TryItYourself/Ch_2_Python_TiY_Impute_Missing_Values_from_Internal_Data.py">
+                    <img src="images/python.png" alt="Python icon" height="32" width="32" />
+                    Python
+                </a>
+            </p>
+            <!-- R -->
+            <p>
+                <a href="Ch_2/TryItYourself/Ch_2_R_TiY_Impute_Missing_Values_from_Internal_Data.R">
+                    <img src="images/R.png" alt="R icon" height="32" width="32" />
+                    R
+                </a>
+            </p>
+            <!-- StatCrunch -->
+            <p>
+                <a href="Ch_2/TryItYourself/Ch StatCrunch 2 TiY Impute Missing Values From Internal Data.docx">
+                    <img src="images/statcrunch.png" alt="StatCrunch icon" height="32" width="32" />
+                    StatCrunch
+                </a>
+            </p>
+        </div>
     </div>
-    <!-- End updated Tool Time section -->
 
-</div>
 </body>
 </html>
