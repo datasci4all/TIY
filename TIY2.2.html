@@ -155,32 +155,44 @@
     </div>
 
     <!-- Tool Time Section -->
-    <div class="tool-time">
-        <div class="tool-time-title">
-            <img src="images/gear.png" alt="Gear Icon" height="32" width="32" />
-            Tool Time
-        </div>
-
-        <div class="tools-list">
-            <!-- Excel -->
-            <div class="tool-item">
-                <p>
-                    <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
-                    <strong>Excel</strong>
-                    <a href="docs/Ch 2 Excel TiY Impute Missing Values from Internal Data.docx"
-                       class="download-button"
-                       download>Download</a>
-                    <button class="copy-button" onclick="copyCode('excelSteps')">Copy</button>
-                </p>
-                <div class="code-container">
-                    <pre><code id="excelSteps">
-1) Open the dataset in Excel.
-2) Identify the GPA column and calculate the mean for all non-missing values.
-3) Create a new column: in empty cells, enter the previously calculated mean.
-4) Save your file and analyze the updated GPA column.
-                    </code></pre>
-                </div>
-            </div>
+    <div class="tool-item">
+      <p>
+        <!-- You can keep your Excel icon, title, and other buttons here if desired -->
+        <img src="images/excel.png" alt="Excel icon" height="32" width="32" />
+        <strong>Excel</strong>
+      </p>
+    
+      <!-- Scrollable Instructions Box -->
+      <div class="code-container" style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #fefefe;">
+        <pre><code>
+    1. Open the vote.csv data set in Excel.
+    2. Verify that gpa is in column D.
+    3. Calculate mean and median before imputation:
+       a. Type the formula: 
+          =AVERAGE(D:D) in Cell J1
+       b. Type “Mean before imputation” in Cell I1.
+       c. Type the formula: 
+          =MEDIAN(D:D) in Cell J2
+       d. Type “Median before imputation” in Cell I2.
+    
+    4. Perform mean imputation:
+       a. Highlight the E column to the right of gpa and Right-Click → Insert.
+       b. Title this new column “imputed_gpa” in cell E1.
+       c. Use an IF statement combined with ISBLANK. 
+          Assuming the original gpa is in column D, in the first row of the new column (cell E2), enter: 
+          =IF(ISBLANK(D2), K$1, D2).
+       d. Apply this formula to all rows of this column.
+    
+    5. Calculate mean and median after imputation:
+       a. Type the formula: 
+          =AVERAGE(E:E) in Cell K4
+       b. Type “Mean before imputation” in Cell J4.
+       c. Type the formula: 
+          =MEDIAN(E:E) in Cell K5
+       d. Type “Median before imputation” in Cell J5.
+        </code></pre>
+      </div>
+    </div>
 
             <!-- Python -->
             <div class="tool-item">
